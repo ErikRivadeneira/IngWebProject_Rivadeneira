@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IngWebProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Mastery">
+          <Key>
+            <PropertyRef Name="MasteryID" />
+          </Key>
+          <Property Name="MasteryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsersID" Type="int" Nullable="false" />
+          <Property Name="QuestionsID" Type="int" Nullable="false" />
+          <Property Name="TotalTries" Type="int" Nullable="false" />
+          <Property Name="CorrectTries" Type="int" Nullable="false" />
+          <Property Name="DifficultyLevel" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DifficultyPercentage" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Options">
+          <Key>
+            <PropertyRef Name="OptionsID" />
+          </Key>
+          <Property Name="OptionsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionsID" Type="int" Nullable="false" />
+          <Property Name="OptionText" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="isCorrect" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="QuestionsID" />
+          </Key>
+          <Property Name="QuestionsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionText" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="InitialDifficulty" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Scores">
+          <Key>
+            <PropertyRef Name="ScoresID" />
+          </Key>
+          <Property Name="ScoresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsersID" Type="int" Nullable="false" />
+          <Property Name="Combo" Type="int" Nullable="false" />
+          <Property Name="Points" Type="float" Nullable="false" />
+          <Property Name="MODE" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UsersID" />
+          </Key>
+          <Property Name="UsersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Passwrd" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MasteryQuestionsID">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="Mastery" Type="Self.Mastery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="QuestionsID" />
+            </Principal>
+            <Dependent Role="Mastery">
+              <PropertyRef Name="QuestionsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasteryUsersID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Mastery" Type="Self.Mastery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UsersID" />
+            </Principal>
+            <Dependent Role="Mastery">
+              <PropertyRef Name="UsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsID">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="Options" Type="Self.Options" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="QuestionsID" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="QuestionsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Scores" Type="Self.Scores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UsersID" />
+            </Principal>
+            <Dependent Role="Scores">
+              <PropertyRef Name="UsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IngWebProjectModelStoreContainer">
+          <EntitySet Name="Mastery" EntityType="Self.Mastery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Options" EntityType="Self.Options" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Scores" EntityType="Self.Scores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MasteryQuestionsID" Association="Self.FK_MasteryQuestionsID">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Mastery" EntitySet="Mastery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasteryUsersID" Association="Self.FK_MasteryUsersID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Mastery" EntitySet="Mastery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsID" Association="Self.FK_QuestionsID">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Options" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersID" Association="Self.FK_UsersID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Scores" EntitySet="Scores" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IngWebProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Mastery">
+          <Key>
+            <PropertyRef Name="MasteryID" />
+          </Key>
+          <Property Name="MasteryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsersID" Type="Int32" Nullable="false" />
+          <Property Name="QuestionsID" Type="Int32" Nullable="false" />
+          <Property Name="TotalTries" Type="Int32" Nullable="false" />
+          <Property Name="CorrectTries" Type="Int32" Nullable="false" />
+          <Property Name="DifficultyLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DifficultyPercentage" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_MasteryQuestionsID" FromRole="Mastery" ToRole="Questions" />
+          <NavigationProperty Name="User" Relationship="Self.FK_MasteryUsersID" FromRole="Mastery" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="OptionsID" />
+          </Key>
+          <Property Name="OptionsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionsID" Type="Int32" Nullable="false" />
+          <Property Name="OptionText" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isCorrect" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_QuestionsID" FromRole="Options" ToRole="Questions" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionsID" />
+          </Key>
+          <Property Name="QuestionsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionText" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InitialDifficulty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Masteries" Relationship="Self.FK_MasteryQuestionsID" FromRole="Questions" ToRole="Mastery" />
+          <NavigationProperty Name="Options" Relationship="Self.FK_QuestionsID" FromRole="Questions" ToRole="Options" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="ScoresID" />
+          </Key>
+          <Property Name="ScoresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsersID" Type="Int32" Nullable="false" />
+          <Property Name="Combo" Type="Int32" Nullable="false" />
+          <Property Name="Points" Type="Double" Nullable="false" />
+          <Property Name="MODE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UsersID" FromRole="Scores" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UsersID" />
+          </Key>
+          <Property Name="UsersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passwrd" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Masteries" Relationship="Self.FK_MasteryUsersID" FromRole="Users" ToRole="Mastery" />
+          <NavigationProperty Name="Scores" Relationship="Self.FK_UsersID" FromRole="Users" ToRole="Scores" />
+        </EntityType>
+        <Association Name="FK_MasteryQuestionsID">
+          <End Role="Questions" Type="Self.Question" Multiplicity="1" />
+          <End Role="Mastery" Type="Self.Mastery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="QuestionsID" />
+            </Principal>
+            <Dependent Role="Mastery">
+              <PropertyRef Name="QuestionsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasteryUsersID">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Mastery" Type="Self.Mastery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UsersID" />
+            </Principal>
+            <Dependent Role="Mastery">
+              <PropertyRef Name="UsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsID">
+          <End Role="Questions" Type="Self.Question" Multiplicity="1" />
+          <End Role="Options" Type="Self.Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="QuestionsID" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="QuestionsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersID">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Scores" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UsersID" />
+            </Principal>
+            <Dependent Role="Scores">
+              <PropertyRef Name="UsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IngWebProjectEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Masteries" EntityType="Self.Mastery" />
+          <EntitySet Name="Options" EntityType="Self.Option" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="Scores" EntityType="Self.Score" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_MasteryQuestionsID" Association="Self.FK_MasteryQuestionsID">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Mastery" EntitySet="Masteries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasteryUsersID" Association="Self.FK_MasteryUsersID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Mastery" EntitySet="Masteries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsID" Association="Self.FK_QuestionsID">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Options" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersID" Association="Self.FK_UsersID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Scores" EntitySet="Scores" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IngWebProjectModelStoreContainer" CdmEntityContainer="IngWebProjectEntities1">
+          <EntitySetMapping Name="Masteries">
+            <EntityTypeMapping TypeName="IngWebProjectModel.Mastery">
+              <MappingFragment StoreEntitySet="Mastery">
+                <ScalarProperty Name="MasteryID" ColumnName="MasteryID" />
+                <ScalarProperty Name="UsersID" ColumnName="UsersID" />
+                <ScalarProperty Name="QuestionsID" ColumnName="QuestionsID" />
+                <ScalarProperty Name="TotalTries" ColumnName="TotalTries" />
+                <ScalarProperty Name="CorrectTries" ColumnName="CorrectTries" />
+                <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
+                <ScalarProperty Name="DifficultyPercentage" ColumnName="DifficultyPercentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Options">
+            <EntityTypeMapping TypeName="IngWebProjectModel.Option">
+              <MappingFragment StoreEntitySet="Options">
+                <ScalarProperty Name="OptionsID" ColumnName="OptionsID" />
+                <ScalarProperty Name="QuestionsID" ColumnName="QuestionsID" />
+                <ScalarProperty Name="OptionText" ColumnName="OptionText" />
+                <ScalarProperty Name="isCorrect" ColumnName="isCorrect" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="IngWebProjectModel.Question">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="QuestionsID" ColumnName="QuestionsID" />
+                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+                <ScalarProperty Name="InitialDifficulty" ColumnName="InitialDifficulty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Scores">
+            <EntityTypeMapping TypeName="IngWebProjectModel.Score">
+              <MappingFragment StoreEntitySet="Scores">
+                <ScalarProperty Name="ScoresID" ColumnName="ScoresID" />
+                <ScalarProperty Name="UsersID" ColumnName="UsersID" />
+                <ScalarProperty Name="Combo" ColumnName="Combo" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="MODE" ColumnName="MODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="IngWebProjectModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UsersID" ColumnName="UsersID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Passwrd" ColumnName="Passwrd" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

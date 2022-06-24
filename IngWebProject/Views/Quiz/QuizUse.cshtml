@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "QuizUse";
+
+
+}
+
+<h2>Grammar Quiz</h2>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    function StartQuiz(){
+        $.get("/Quiz/StartQuiz",
+            {
+                ObjActual: $("#DiffSelect").val()
+            }, function (data) {
+                $("#questionPartial").html(data);
+            });
+    }
+</script>
+
+<div class="form-group">
+    <h3>Dificultad</h3>
+    <div class="col-md-10">
+        @Html.DropDownList("DiffSelect", null, htmlAttributes: new { @class = "form-control", onchange = "StartQuiz()" })
+    </div>
+</div>
+
+<div id="questionPartial" class="form-group">
+
+</div>
+

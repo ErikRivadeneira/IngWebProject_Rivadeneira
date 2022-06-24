@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<style type="text/css">
+    p.NotifNeg {
+        color: black;
+        font-size: 30px;
+        text-shadow: 1px 1px 2px red;
+    }
+
+    p.NotifPosUser {
+        color: black;
+        font-size: 30px;
+        text-shadow: 1px 1px 2px blue;
+    }
+    p.NotifPosAdmin {
+        color: black;
+        font-size: 30px;
+        text-shadow: 1px 1px 2px green;
+    }
+</style>
+
+@{ if (Session["UserType"] == null)
+    {
+        <p class="NotifNeg">
+            No Esta Iniciada la Sesion!
+        </p>
+    }
+    else if (Session["UserType"].Equals("Admin"))
+    {
+        <p class="NotifPosAdmin">
+            Eres Admin!
+        </p>
+    }
+    else
+    {
+        <p class="NotifPosUser">
+            La Sesion Esta Iniciada!
+        </p>
+    }
+}

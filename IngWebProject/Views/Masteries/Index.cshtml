@@ -1,0 +1,70 @@
+﻿@model IEnumerable<IngWebProject.Models.Mastery>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("CutDownResults", "Masteries", FormMethod.Get))
+{
+    <b>Seleccione el nivel de maestria para filtrar</b>
+    <br />
+    @Html.DropDownList("FilterOptions", null, htmlAttributes: new { @class = "form-control" })
+    <input type="submit" id="FilterOptions" value="Filtrar" />
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalTries)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorrectTries)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DifficultyLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DifficultyPercentage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Question.QuestionText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalTries)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorrectTries)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DifficultyLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DifficultyPercentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Question.QuestionText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Username)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MasteryID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MasteryID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MasteryID })
+            </td>
+        </tr>
+    }
+
+</table>

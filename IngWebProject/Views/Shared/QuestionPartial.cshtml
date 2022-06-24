@@ -1,0 +1,15 @@
+﻿@using IngWebProject.Scripts
+@model IngWebProject.Models.Option
+
+@using (Html.BeginForm("NextQuestion", "Quiz", FormMethod.Get))
+{
+    <br />
+    <br />
+    <h4>Question n°@(Utility.nQues+1)</h4>
+    @Html.DisplayFor(model => model.Question.QuestionText);
+    <br />
+    <br />
+    @Html.DropDownList("OptionsID", null, htmlAttributes: new { @class = "form-control" })
+    <br />
+    <input type="submit" id="FilterOptions" value="Siguiente" />
+}

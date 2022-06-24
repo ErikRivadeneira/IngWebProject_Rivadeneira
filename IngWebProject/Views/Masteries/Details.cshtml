@@ -1,0 +1,66 @@
+﻿@model IngWebProject.Models.Mastery
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Mastery</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalTries)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalTries)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorrectTries)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorrectTries)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DifficultyLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DifficultyLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DifficultyPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DifficultyPercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Question.QuestionText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Question.QuestionText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MasteryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

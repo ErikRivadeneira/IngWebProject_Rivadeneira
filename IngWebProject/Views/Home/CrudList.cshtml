@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "CrudList";
+}
+
+<h2>CrudList</h2>
+
+<div>
+    <p>
+        Click en cualquiera de los siguientes enlaces para ir al respectivo index:
+        @{ if (Session["UserType"] == null || Session["UserType"].Equals("Admin"))
+            {
+                <li> <a href="@Url.Action("Index","Users1")"> Indice de Usuarios</a></li>
+                <li> <a href="@Url.Action("Index","Questions")"> Indice de Preguntas</a></li>
+                <li> <a href="@Url.Action("Index","Options")"> Indice de Opciones</a></li>
+                <li> <a href="@Url.Action("Index","Scores")"> Indice de Puntuaciones</a></li>
+                <li> <a href="@Url.Action("Index","Masteries")"> Indice de Maestrias</a></li>
+            }
+            else
+            {
+                <li> <a href="@Url.Action("QuizUse","Quiz")"> Empezar quiz!</a></li>
+            }
+        }
+    </p>
+</div>
+
