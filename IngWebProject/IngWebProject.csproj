@@ -138,35 +138,35 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\IWModels.Context.cs">
+    <Compile Include="Models\IWModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IWModels.Context.tt</DependentUpon>
+      <DependentUpon>IWModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\IWModels.cs">
+    <Compile Include="Models\IWModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IWModels.tt</DependentUpon>
+      <DependentUpon>IWModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\IWModels.Designer.cs">
+    <Compile Include="Models\IWModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IWModels.edmx</DependentUpon>
+      <DependentUpon>IWModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Mastery.cs">
-      <DependentUpon>IWModels.tt</DependentUpon>
+      <DependentUpon>IWModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Option.cs">
-      <DependentUpon>IWModels.tt</DependentUpon>
+      <DependentUpon>IWModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Question.cs">
-      <DependentUpon>IWModels.tt</DependentUpon>
+      <DependentUpon>IWModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Score.cs">
-      <DependentUpon>IWModels.tt</DependentUpon>
+      <DependentUpon>IWModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>IWModels.tt</DependentUpon>
+      <DependentUpon>IWModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\Utility.cs" />
@@ -180,24 +180,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\IWModels.Context.tt">
+    <Content Include="Models\IWModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>IWModels.edmx</DependentUpon>
-      <LastGenOutput>IWModels.Context.cs</LastGenOutput>
+      <DependentUpon>IWModel.edmx</DependentUpon>
+      <LastGenOutput>IWModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\IWModels.tt">
+    <Content Include="Models\IWModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>IWModels.edmx</DependentUpon>
-      <LastGenOutput>IWModels.cs</LastGenOutput>
+      <DependentUpon>IWModel.edmx</DependentUpon>
+      <LastGenOutput>IWModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\IWModels.edmx">
+    <EntityDeploy Include="Models\IWModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>IWModels.Designer.cs</LastGenOutput>
+      <LastGenOutput>IWModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\IWModels.edmx.diagram">
-      <DependentUpon>IWModels.edmx</DependentUpon>
+    <Content Include="Models\IWModel.edmx.diagram">
+      <DependentUpon>IWModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

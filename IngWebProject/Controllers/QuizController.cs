@@ -12,7 +12,7 @@ namespace IngWebProject.Controllers
 {
     public class QuizController : Controller
     {
-        private IngWebProjectEntities1 db = new IngWebProjectEntities1();
+        private IWContext db = new IWContext();
         // GET: Quiz
         public ActionResult Index()
         {

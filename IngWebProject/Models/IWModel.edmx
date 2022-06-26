@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="IngWebProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="db2de38c099e3348f49815aec001478069Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Mastery">
           <Key>
             <PropertyRef Name="MasteryID" />
@@ -102,7 +102,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="IngWebProjectModelStoreContainer">
+        <EntityContainer Name="db2de38c099e3348f49815aec001478069ModelStoreContainer">
           <EntitySet Name="Mastery" EntityType="Self.Mastery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Options" EntityType="Self.Options" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
@@ -129,7 +129,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="IngWebProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="db2de38c099e3348f49815aec001478069Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Mastery">
           <Key>
             <PropertyRef Name="MasteryID" />
@@ -235,7 +235,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="IngWebProjectEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="IWContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Masteries" EntityType="Self.Mastery" />
           <EntitySet Name="Options" EntityType="Self.Option" />
           <EntitySet Name="Questions" EntityType="Self.Question" />
@@ -263,9 +263,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="IngWebProjectModelStoreContainer" CdmEntityContainer="IngWebProjectEntities1">
+        <EntityContainerMapping StorageEntityContainer="db2de38c099e3348f49815aec001478069ModelStoreContainer" CdmEntityContainer="IWContext">
           <EntitySetMapping Name="Masteries">
-            <EntityTypeMapping TypeName="IngWebProjectModel.Mastery">
+            <EntityTypeMapping TypeName="db2de38c099e3348f49815aec001478069Model.Mastery">
               <MappingFragment StoreEntitySet="Mastery">
                 <ScalarProperty Name="MasteryID" ColumnName="MasteryID" />
                 <ScalarProperty Name="UsersID" ColumnName="UsersID" />
@@ -278,7 +278,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Options">
-            <EntityTypeMapping TypeName="IngWebProjectModel.Option">
+            <EntityTypeMapping TypeName="db2de38c099e3348f49815aec001478069Model.Option">
               <MappingFragment StoreEntitySet="Options">
                 <ScalarProperty Name="OptionsID" ColumnName="OptionsID" />
                 <ScalarProperty Name="QuestionsID" ColumnName="QuestionsID" />
@@ -288,7 +288,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Questions">
-            <EntityTypeMapping TypeName="IngWebProjectModel.Question">
+            <EntityTypeMapping TypeName="db2de38c099e3348f49815aec001478069Model.Question">
               <MappingFragment StoreEntitySet="Questions">
                 <ScalarProperty Name="QuestionsID" ColumnName="QuestionsID" />
                 <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
@@ -297,7 +297,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Scores">
-            <EntityTypeMapping TypeName="IngWebProjectModel.Score">
+            <EntityTypeMapping TypeName="db2de38c099e3348f49815aec001478069Model.Score">
               <MappingFragment StoreEntitySet="Scores">
                 <ScalarProperty Name="ScoresID" ColumnName="ScoresID" />
                 <ScalarProperty Name="UsersID" ColumnName="UsersID" />
@@ -308,7 +308,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="IngWebProjectModel.User">
+            <EntityTypeMapping TypeName="db2de38c099e3348f49815aec001478069Model.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="UsersID" ColumnName="UsersID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />

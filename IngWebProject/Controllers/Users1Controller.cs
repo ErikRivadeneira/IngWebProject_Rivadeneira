@@ -12,8 +12,8 @@ namespace IngWebProject.Controllers
 {
     public class Users1Controller : Controller
     {
-        private IngWebProjectEntities1 db = new IngWebProjectEntities1();
-
+        //private IngWebProjectEntities1 db = new IngWebProjectEntities1(); 
+        private IWContext db = new IWContext();
         // GET: Users1
         public ActionResult Index()
         {

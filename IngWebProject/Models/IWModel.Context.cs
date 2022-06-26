@@ -13,10 +13,10 @@ namespace IngWebProject.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class IngWebProjectEntities1 : DbContext
+    public partial class IWContext : DbContext
     {
-        public IngWebProjectEntities1()
-            : base("name=IngWebProjectEntities1")
+        public IWContext()
+            : base("name=IWContext")
         {
         }
     

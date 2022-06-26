@@ -12,7 +12,7 @@ namespace IngWebProject.Controllers
 {
     public class OptionsController : Controller
     {
-        private IngWebProjectEntities1 db = new IngWebProjectEntities1();
+        private IWContext db = new IWContext();
 
         // GET: Options
         public ActionResult Index()
